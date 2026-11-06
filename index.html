@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Quartier Coop – simulation</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8EF;--cd:#fff;--ink:#2A211A;--mu:#6B5F52;--ac:#C2410C;--at:#9A3412;--sd:#F3E4D0;--gr:#1F4D3A;--on:#FFF8EF;--sh:0 1px 2px rgba(42,33,26,.06),0 8px 24px rgba(42,33,26,.07);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1B1511;--cd:#2A211A;--ink:#FFF8EF;--mu:#C9B8A3;--at:#FDBA74;--sd:#3A2D22;--sh:none}}
+:root[data-theme="dark"]{--bg:#1B1511;--cd:#2A211A;--ink:#FFF8EF;--mu:#C9B8A3;--at:#FDBA74;--sd:#3A2D22;--sh:none}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 'DM Sans',system-ui,sans-serif}
+#app{max-width:480px;margin:0 auto;padding:0 16px 110px}
+h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0}
+h2{font-size:22px;margin:28px 0 12px}
+button{font:inherit;cursor:pointer}
+.hero{background:var(--ac);color:var(--on);margin:0 -16px;padding:18px 20px 96px;border-radius:0 0 32px 32px;position:relative;overflow:hidden}
+.hero h1{font-size:36px;line-height:1.05;margin:14px 0 8px}
+.hero p{margin:0;max-width:180px;font-size:15px}
+.hero svg{position:absolute;right:10px;bottom:56px;width:190px;height:100px}
+.sim{display:inline-block;background:var(--on);color:#9A3412;font-size:12px;font-weight:700;border-radius:99px;padding:4px 10px}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:-64px;position:relative}
+.tl button{border:0;border-radius:18px;background:var(--cd);color:var(--ink);box-shadow:0 8px 24px rgba(42,33,26,.14);padding:14px 0;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:76px}
+.ic{width:26px;height:26px;fill:none;stroke:var(--at);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.c{background:var(--cd);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--sh);margin-bottom:12px}
+.s{font-size:14px;color:var(--mu)}
+.g{align-self:flex-start;font-size:12px;font-weight:700;color:var(--at);background:var(--sd);border-radius:99px;padding:3px 10px}
+.k,.o{min-height:46px;border-radius:14px;font-weight:700;padding:0 16px}
+.k{border:0;background:var(--ac);color:var(--on)}
+.o{border:1.5px solid var(--at);background:transparent;color:var(--at)}
+.e{flex-direction:row;align-items:center;gap:14px}
+.d{width:56px;height:60px;flex:none;border-radius:14px;background:var(--sd);color:var(--at);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:20px;line-height:1.1}
+.d small{font-size:12px;text-transform:uppercase}
+.v{display:flex;flex-direction:column;gap:3px;flex:1}
+.p{display:flex;gap:12px;overflow-x:auto;margin:0 -16px;padding:4px 16px 16px;scroll-snap-type:x mandatory}
+.p .c{flex:0 0 220px;scroll-snap-align:start;margin:0}
+.ph{height:112px;border-radius:14px;display:flex;align-items:center;justify-content:center;position:relative}
+.ph svg{width:120px;height:80px}
+.ph i{position:absolute;right:6px;bottom:6px;font-size:11px;font-style:normal;font-weight:700;background:rgba(255,255,255,.92);color:#2A211A;border-radius:99px;padding:2px 8px}
+.ch{display:flex;gap:8px;overflow-x:auto;padding-bottom:12px}
+.ch button{flex:none;min-height:44px;border-radius:99px;border:1.5px solid var(--sd);background:var(--cd);color:var(--ink);padding:0 14px;font-weight:600}
+.ch button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.al{background:#FEF3C7;color:#2A211A;border-radius:18px;padding:14px;margin-top:20px;display:flex;flex-direction:column;gap:4px}
+.al .g{background:#92400E;color:#FFF8EF}
+.gr{background:var(--gr);color:var(--on)}
+.gr .s{color:#D1E7DB}
+.bar{height:10px;border-radius:99px;background:var(--sd)}.bar i{display:block;height:10px;border-radius:99px;background:var(--ac)}
+textarea{width:100%;min-height:90px;border-radius:12px;border:1.5px solid var(--sd);background:var(--bg);color:var(--ink);font:inherit;padding:10px}
+.mn{font:600 22px 'Fraunces',Georgia,serif;color:var(--at)}
+.gd{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gd button{min-height:56px;border:0;border-radius:16px;background:var(--cd);color:var(--ink);box-shadow:var(--sh);font-weight:700}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);display:flex;background:var(--cd);box-shadow:0 -4px 20px rgba(42,33,26,.1);border-radius:20px 20px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;color:var(--mu);font-size:12px;font-weight:600;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+nav button[aria-current=page]{color:var(--at)}nav .ic{stroke:currentColor}
+.view{display:none}.view.on{display:block}
+#toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:var(--bg);border-radius:14px;padding:12px 16px;font-size:14px;width:min(420px,90%);display:none;text-align:center}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="pl" viewBox="0 0 120 80"><circle cx="60" cy="42" r="34" fill="#fff"/><circle cx="60" cy="42" r="24" fill="#F3E4D0"/><circle cx="52" cy="38" r="8" fill="var(--f1)"/><circle cx="68" cy="46" r="7" fill="var(--f2)"/><path d="M48 52q10 8 24 0" stroke="var(--f1)" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="bd" viewBox="0 0 120 80"><ellipse cx="60" cy="44" rx="42" ry="20" fill="#C98A3D"/><path d="M36 38l12 12M54 34l12 14M72 34l12 12" stroke="#F3D9A8" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="sc" viewBox="0 0 190 100"><circle cx="30" cy="22" r="14" fill="#FDBA74"/><path d="M6 100V60l24-22 24 22v40zM58 100V48l28-26 28 26v52zM118 100V64l20-18 20 18v36z" fill="#FFF8EF"/><path d="M24 70h12v14H24zM78 56h12v14H78zM78 80h12v10H78zM132 74h12v12h-12z" fill="#C2410C"/><circle cx="174" cy="62" r="14" fill="#86B49B"/><path d="M172 76h4v24h-4z" fill="#1F4D3A"/></symbol>
+<symbol id="i-h" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3z"/><path d="M9 21v-6h6v6"/></symbol>
+<symbol id="i-c" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+<symbol id="i-b" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/></symbol>
+<symbol id="i-t" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="i-m" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></symbol>
+</defs></svg>
+<div id="app">
+<section class="view on" id="v-home">
+<header class="hero"><span class="sim">Simulation · contenus fictifs</span><h1>Bonjour,<br>quartier Coop</h1><p id="dt"></p><svg aria-hidden="true"><use href="#sc"/></svg></header>
+<div class="tl"><button data-a="go:agenda"><svg class="ic"><use href="#i-c"/></svg>Agenda</button><button data-a="go:transports"><svg class="ic"><use href="#i-b"/></svg>Transports</button><button data-a="go:paroles"><svg class="ic"><use href="#i-t"/></svg>Paroles</button><button data-a="go:plus"><svg class="ic"><use href="#i-m"/></svg>Plus</button></div>
+<div class="al"><span class="g">Alerte</span><b>Travaux : voie fermée, circulation déviée</b><span class="s">Du lundi 9 au vendredi 13 novembre</span></div>
+<h2>Plats du jour</h2><div class="p" id="pl-l"></div>
+<div class="c e"><div class="d" style="background:var(--ac);color:var(--on)"><svg class="ic" style="stroke:#FFF8EF"><use href="#i-t"/></svg></div><div class="v"><b>Vous êtes restaurateur ?</b><span class="s">Publiez la photo de votre plat du jour</span></div><button class="o" data-a="plat">Publier</button></div>
+<div class="c gr"><span class="g" style="background:var(--on);color:#1F4D3A">Bon plan · Boulangerie</span><b style="font-size:17px">Panier anti-gaspi du soir</b><span class="s">3 € le panier · retrait de 18 h à 19 h</span></div>
+<h2>Prochains événements</h2><div id="ev-3"></div>
+<h2>Votre élue de quartier</h2>
+<div class="c e"><div class="d" style="border-radius:50%;width:52px;height:52px;background:var(--ac);color:var(--on);font-family:Fraunces,serif">É</div><div class="v"><b>Permanence ouverte aux habitants</b><span class="s">Jeudi 19 novembre · 17 h–19 h · mairie de quartier</span></div></div>
+<h2>Marchés et fêtes à proximité</h2>
+<div class="c e"><div class="d"><svg class="ic" style="width:34px;height:34px"><use href="#i-h"/></svg></div><div class="v"><b>Marché du boulevard de la Marne</b><span class="s">Jours et horaires à confirmer</span></div></div>
+<div class="c e"><div class="d"><svg class="ic" style="width:34px;height:34px"><use href="#i-h"/></svg></div><div class="v"><b>Marché de la place de l’Hippodrome</b><span class="s">Jours et horaires à confirmer</span></div></div>
+</section>
+<section class="view" id="v-agenda"><h2>Agenda du quartier</h2><div class="ch" id="chips"></div><div id="ev-l"></div></section>
+<section class="view" id="v-transports"><h2>Transports</h2><p class="s">Passages d’exemple, à relier aux données ouvertes de l’opérateur.</p><div id="tr-l"></div></section>
+<section class="view" id="v-paroles"><h2>Votre parole</h2>
+<div class="c" style="gap:10px"><b>Un souci dans le quartier ?</b><label class="s" for="tx">Décrivez-le en quelques mots</label><textarea id="tx"></textarea><button class="k" data-a="post">Signaler un sujet</button></div>
+<div id="vo-l"></div></section>
+<section class="view" id="v-plus"><h2>Les ateliers éclairés</h2>
+<div class="p"><div class="c"><div class="ph" style="background:#C2410C"><svg viewBox="0 0 60 60" style="width:60px;height:60px" fill="none" stroke="#fff" stroke-width="3"><path d="M30 8l20 11v22L30 52 10 41V19z"/><path d="M10 19l20 11 20-11M30 30v22"/></svg></div><b>Fab lab</b><span class="s">Machines et horaires à venir</span></div><div class="c"><div class="ph" style="background:#1F4D3A"><svg viewBox="0 0 60 60" style="width:60px;height:60px" fill="none" stroke="#fff" stroke-width="7"><circle cx="30" cy="30" r="16" stroke-dasharray="7 6"/><circle cx="30" cy="30" r="5" fill="#fff" stroke="none"/></svg></div><b>Maker space</b><span class="s">Outils et horaires à venir</span></div><div class="c"><div class="ph" style="background:#92400E"><svg viewBox="0 0 60 60" style="width:60px;height:60px" fill="none" stroke="#fff" stroke-width="3"><path d="M30 8c-14 0-22 10-22 22s9 22 20 22c5 0 5-5 2-8-3-4 0-8 5-8h8c4 0 8-3 8-8C51 17 42 8 30 8z"/></svg></div><b>Ateliers d’artistes</b><span class="s">Portes ouvertes le 15 novembre</span></div></div>
+<h2>Galerie Kraemer</h2><div class="c"><div class="ph" style="background:var(--sd)"><svg viewBox="0 0 170 80" style="width:170px;height:80px"><rect x="6" y="14" width="46" height="56" fill="#fff" stroke="#2A211A" stroke-width="4"/><circle cx="29" cy="40" r="12" fill="#C2410C"/><rect x="62" y="4" width="48" height="40" fill="#fff" stroke="#2A211A" stroke-width="4"/><path d="M66 40l14-18 12 12 10-8v14z" fill="#1F4D3A"/><rect x="120" y="22" width="44" height="48" fill="#fff" stroke="#2A211A" stroke-width="4"/><path d="M128 62l12-26 16 26z" fill="#E9A23B"/></svg></div><b>Exposition « Lumières d’automne »</b><span class="s">Vernissage le 14 novembre à 18 h</span></div>
+<h2>Avancement des projets</h2><div class="c" style="gap:10px"><b>Nouveau bâtiment du quartier</b><div class="bar"><i style="width:40%"></i></div><span class="s">Étape 2 sur 5 · prochaine réunion le 17 novembre</span></div>
+<h2>Annuaire pratique</h2><div class="gd"><button data-a="t:Mairie">Mairie</button><button data-a="t:Pharmacie de garde">Pharmacie de garde</button><button data-a="t:Médecins">Médecins</button><button data-a="t:Collecte des déchets">Collecte des déchets</button></div></section>
+</div>
+<div id="toast" role="status"></div>
+<nav aria-label="Navigation principale"><button data-a="go:home"><svg class="ic"><use href="#i-h"/></svg>Accueil</button><button data-a="go:agenda"><svg class="ic"><use href="#i-c"/></svg>Agenda</button><button data-a="go:transports"><svg class="ic"><use href="#i-b"/></svg>Transports</button><button data-a="go:paroles"><svg class="ic"><use href="#i-t"/></svg>Paroles</button><button data-a="go:plus"><svg class="ic"><use href="#i-m"/></svg>Plus</button></nav>
+<script>
+var P=[["Le Bateau du Rhin","Choucroute de la mer","17,50 €","#F9D5B8","#C2410C","#1F4D3A"],["Le Block","Burger maison, frites","14 €","#CFE3D6","#1F4D3A","#E9A23B"],["Dékalé","Bowl poulet mariné","13 €","#F6E1A8","#C2410C","#1F4D3A"],["Boulangerie","Tarte du jour","4,50 €","#E8C9A0","","",1]];
+var E=[[12,"nov","Soirée jeux de société","Kaleidoscope","19 h","Kaleidoscope"],[14,"nov","Vernissage « Lumières d’automne »","Galerie Kraemer","18 h","Galerie Kraemer"],[15,"nov","Portes ouvertes des ateliers","Les ateliers éclairés","14 h–18 h","Les ateliers éclairés"],[17,"nov","Réunion d’information sur les chantiers","SPL des Deux Rives","19 h","SPL des Deux Rives"],[18,"nov","Initiation à la découpe laser","Les ateliers éclairés","18 h","Les ateliers éclairés"],[20,"nov","Soirée concert","Le Block","21 h","Restos"],[21,"nov","Marché des créateurs","Kaleidoscope","10 h–17 h","Kaleidoscope"]];
+var T=[["1","Vers le centre",[3,11,19]],["1","Vers la périphérie",[6,14,22]],["2","Vers la gare",[4,12,24]]];
+var V=[{t:"Éclairage insuffisant près de la place",n:42},{t:"Places vélo manquantes devant Kaleidoscope",n:27},{t:"Bruit nocturne le week-end",n:15}];
+var F="Tous",$=function(s){return document.querySelector(s)};
+function ev(e){return '<div class="c e"><div class="d">'+e[0]+'<small>'+e[1]+'</small></div><div class="v"><b>'+e[2]+'</b><span class="s">'+e[4]+'</span><span class="g">'+e[3]+'</span></div></div>'}
+function pls(){$("#pl-l").innerHTML=P.map(function(p){return '<div class="c"><div class="ph" style="background:'+p[3]+'"><svg style="--f1:'+p[4]+';--f2:'+p[5]+'" aria-hidden="true"><use href="#'+(p[6]?'bd':'pl')+'"/></svg><i>'+(p[7]||"Photo du restaurateur")+'</i></div><span class="g">'+p[0]+'</span><b>'+p[1]+'</b><span class="s">'+p[2]+'</span></div>'}).join("")}
+function evs(){$("#ev-3").innerHTML=E.slice(0,3).map(ev).join("");$("#chips").innerHTML=["Tous","Kaleidoscope","Galerie Kraemer","Les ateliers éclairés","SPL des Deux Rives","Restos"].map(function(c){return '<button data-a="chip:'+c+'" aria-pressed="'+(c==F)+'">'+c+'</button>'}).join("");$("#ev-l").innerHTML=E.filter(function(e){return F=="Tous"||e[5]==F}).map(ev).join("")}
+function trs(){$("#tr-l").innerHTML=T.map(function(t){return '<div class="c e"><div class="d" style="background:var(--gr);color:var(--on)">'+t[0]+'</div><div class="v"><b>Ligne '+t[0]+'</b><span class="s">'+t[1]+' · puis '+t[2][1]+' et '+t[2][2]+' min</span></div><span class="mn">'+t[2][0]+' min</span></div>'}).join("")}
+function vos(){$("#vo-l").innerHTML=V.map(function(v,i){return '<div class="c e"><div class="v"><span>'+v.t+'</span>'+(v.w?'<span class="g">En attente de modération</span>':'<span class="s">'+v.n+' habitants soutiennent</span>')+'</div>'+(v.w?'':'<button class="o" data-a="vote:'+i+'" aria-pressed="'+!!v.m+'">'+(v.m?"Soutenu ✓":"Moi aussi")+'</button>')+'</div>'}).join("")}
+function go(n){document.querySelectorAll(".view").forEach(function(s){s.classList.toggle("on",s.id=="v-"+n)});document.querySelectorAll("nav button").forEach(function(b){b.removeAttribute("aria-current")});var b=[].filter.call(document.querySelectorAll("nav button"),function(x){return x.dataset.a=="go:"+n})[0];if(b)b.setAttribute("aria-current","page");window.scrollTo(0,0)}
+function tt(m){var t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(tt.h);tt.h=setTimeout(function(){t.style.display="none"},2600)}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-a]");if(!b)return;var a=b.dataset.a.split(":"),k=a[0],v=a.slice(1).join(":");
+if(k=="go")go(v);else if(k=="chip"){F=v;evs()}else if(k=="vote"){var o=V[+v];o.m=!o.m;o.n+=o.m?1:-1;vos()}
+else if(k=="post"){var x=$("#tx").value.trim();if(!x){tt("Écrivez d’abord quelques mots.");return}V.unshift({t:x,n:0,w:1});$("#tx").value="";vos();tt("Merci ! Votre message sera publié après modération.")}
+else if(k=="plat"){P.unshift(["Votre restaurant","Votre plat du jour","[prix]","#E6D3F0","#C2410C","#E9A23B",0,"Publié à l’instant"]);pls();$(".p").scrollLeft=0;tt("Simulation : votre photo et votre plat apparaissent ici.")}
+else if(k=="t")tt(v+" : fiche pratique à compléter.")});
+$("#dt").textContent=new Date().toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+pls();evs();trs();vos();go("home");
+</script></body></html>
