@@ -16,6 +16,7 @@ button{font:inherit;cursor:pointer}
 .hero h1{font-size:36px;line-height:1.05;margin:14px 0 8px}
 .hero p{margin:0;max-width:180px;font-size:15px}
 .hero svg{position:absolute;right:10px;bottom:14px;width:190px;height:100px}
+.hero .pro{position:absolute;top:10px;right:14px;min-height:44px;border:1.5px solid var(--on);background:transparent;color:var(--on);border-radius:99px;padding:0 14px;font-weight:700}
 .sim{display:inline-block;background:var(--on);color:#9A3412;font-size:12px;font-weight:700;border-radius:99px;padding:4px 10px}
 .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;position:relative}
 .tl button{border:0;border-radius:18px;background:var(--cd);color:var(--ink);box-shadow:0 8px 24px rgba(42,33,26,.14);padding:14px 0;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:76px}
@@ -43,7 +44,8 @@ button{font:inherit;cursor:pointer}
 .gr{background:var(--gr);color:var(--on)}
 .gr .s{color:#D1E7DB}
 .bar{height:10px;border-radius:99px;background:var(--sd)}.bar i{display:block;height:10px;border-radius:99px;background:var(--ac)}
-textarea{width:100%;min-height:90px;border-radius:12px;border:1.5px solid var(--sd);background:var(--bg);color:var(--ink);font:inherit;padding:10px}
+input,textarea{width:100%;min-height:46px;border-radius:12px;border:1.5px solid var(--sd);background:var(--bg);color:var(--ink);font:inherit;padding:10px}
+textarea{min-height:90px}
 .mn{font:600 22px 'Fraunces',Georgia,serif;color:var(--at)}
 .gd{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .gd button{min-height:56px;border:0;border-radius:16px;background:var(--cd);color:var(--ink);box-shadow:var(--sh);font-weight:700}
@@ -65,14 +67,13 @@ nav button[aria-current=page]{color:var(--at)}nav .ic{stroke:currentColor}
 </defs></svg>
 <div id="app">
 <section class="view on" id="v-home">
-<header class="hero"><span class="sim">Simulation · contenus fictifs</span><h1>Bonjour,<br>quartier Coop</h1><p id="dt"></p><svg aria-hidden="true"><use href="#sc"/></svg></header>
+<header class="hero"><span class="sim">Simulation · contenus fictifs</span><button class="pro" data-a="go:pro" aria-label="Espace annonceur">Espace pro</button><h1>Bonjour,<br>quartier Coop</h1><p id="dt"></p><svg aria-hidden="true"><use href="#sc"/></svg></header>
 <div class="al"><span class="g">Alerte</span><b>Travaux : voie fermée, circulation déviée</b><span class="s">Du lundi 9 au vendredi 13 novembre</span></div>
 <h2>Plats du jour</h2><div class="p" id="pl-l"></div>
-<div class="c e"><div class="d" style="background:var(--ac);color:var(--on)"><svg class="ic" style="stroke:#FFF8EF"><use href="#i-t"/></svg></div><div class="v"><b>Vous êtes restaurateur ?</b><span class="s">Publiez la photo de votre plat du jour</span></div><button class="o" data-a="plat">Publier</button></div>
 <div class="c gr"><span class="g" style="background:var(--on);color:#1F4D3A">Bon plan · Boulangerie</span><b style="font-size:17px">Panier anti-gaspi du soir</b><span class="s">3 € le panier · retrait de 18 h à 19 h</span></div>
 <h2>Prochains événements</h2><div id="ev-3"></div>
 <h2>Votre élue de quartier</h2>
-<div class="c e"><div class="d" style="border-radius:50%;width:52px;height:52px;background:var(--ac);color:var(--on);font-family:Fraunces,serif">É</div><div class="v"><b>Permanence ouverte aux habitants</b><span class="s">Jeudi 19 novembre · 17 h–19 h · mairie de quartier</span></div></div>
+<div class="c e"><div class="d" style="border-radius:50%;width:52px;height:52px;background:var(--ac);color:var(--on);font-family:Fraunces,serif">É</div><div class="v" id="elu"><b>Permanence ouverte aux habitants</b><span class="s">Jeudi 19 novembre · 17 h–19 h · mairie de quartier</span></div></div>
 <h2>Marchés et fêtes à proximité</h2>
 <div class="c e"><div class="d"><svg class="ic" style="width:34px;height:34px"><use href="#i-h"/></svg></div><div class="v"><b>Marché du boulevard de la Marne</b><span class="s">Jours et horaires à confirmer</span></div></div>
 <div class="c e"><div class="d"><svg class="ic" style="width:34px;height:34px"><use href="#i-h"/></svg></div><div class="v"><b>Marché de la place de l’Hippodrome</b><span class="s">Jours et horaires à confirmer</span></div></div>
@@ -82,7 +83,8 @@ nav button[aria-current=page]{color:var(--at)}nav .ic{stroke:currentColor}
 <section class="view" id="v-paroles"><h2>Votre parole</h2>
 <div class="c" style="gap:10px"><b>Un souci dans le quartier ?</b><label class="s" for="tx">Décrivez-le en quelques mots</label><textarea id="tx"></textarea><button class="k" data-a="post">Signaler un sujet</button></div>
 <div id="vo-l"></div></section>
-<section class="view" id="v-plus"><h2>Les ateliers éclairés</h2>
+<section class="view" id="v-pro"><div id="pro-c"></div></section>
+<section class="view" id="v-plus"><div class="c e" style="margin-top:20px"><div class="v"><b>Espace annonceur</b><span class="s">Pour les commerces, lieux culturels et institutions</span></div><button class="k" data-a="go:pro">Accéder</button></div><h2>Les ateliers éclairés</h2>
 <div class="p"><div class="c"><div class="ph" style="background:#C2410C"><svg viewBox="0 0 60 60" style="width:60px;height:60px" fill="none" stroke="#fff" stroke-width="3"><path d="M30 8l20 11v22L30 52 10 41V19z"/><path d="M10 19l20 11 20-11M30 30v22"/></svg></div><b>Fab lab</b><span class="s">Machines et horaires à venir</span></div><div class="c"><div class="ph" style="background:#1F4D3A"><svg viewBox="0 0 60 60" style="width:60px;height:60px" fill="none" stroke="#fff" stroke-width="7"><circle cx="30" cy="30" r="16" stroke-dasharray="7 6"/><circle cx="30" cy="30" r="5" fill="#fff" stroke="none"/></svg></div><b>Maker space</b><span class="s">Outils et horaires à venir</span></div><div class="c"><div class="ph" style="background:#92400E"><svg viewBox="0 0 60 60" style="width:60px;height:60px" fill="none" stroke="#fff" stroke-width="3"><path d="M30 8c-14 0-22 10-22 22s9 22 20 22c5 0 5-5 2-8-3-4 0-8 5-8h8c4 0 8-3 8-8C51 17 42 8 30 8z"/></svg></div><b>Ateliers d’artistes</b><span class="s">Portes ouvertes le 15 novembre</span></div></div>
 <h2>Galerie Kraemer</h2><div class="c"><div class="ph" style="background:var(--sd)"><svg viewBox="0 0 170 80" style="width:170px;height:80px"><rect x="6" y="14" width="46" height="56" fill="#fff" stroke="#2A211A" stroke-width="4"/><circle cx="29" cy="40" r="12" fill="#C2410C"/><rect x="62" y="4" width="48" height="40" fill="#fff" stroke="#2A211A" stroke-width="4"/><path d="M66 40l14-18 12 12 10-8v14z" fill="#1F4D3A"/><rect x="120" y="22" width="44" height="48" fill="#fff" stroke="#2A211A" stroke-width="4"/><path d="M128 62l12-26 16 26z" fill="#E9A23B"/></svg></div><b>Exposition « Lumières d’automne »</b><span class="s">Vernissage le 14 novembre à 18 h</span></div>
 <h2>Avancement des projets</h2><div class="c" style="gap:10px"><b>Nouveau bâtiment du quartier</b><div class="bar"><i style="width:40%"></i></div><span class="s">Étape 2 sur 5 · prochaine réunion le 17 novembre</span></div>
@@ -96,6 +98,17 @@ var E=[[12,"nov","Soirée jeux de société","Kaleidoscope","19 h","Kaleidoscope
 var T=[["1","Vers le centre",[3,11,19]],["1","Vers la périphérie",[6,14,22]],["2","Vers la gare",[4,12,24]]];
 var V=[{t:"Éclairage insuffisant près de la place",n:42},{t:"Places vélo manquantes devant Kaleidoscope",n:27},{t:"Bruit nocturne le week-end",n:15}];
 var F="Tous",$=function(s){return document.querySelector(s)};
+function esc(s){return s.replace(/[&<>"]/g,function(c){return "&#"+c.charCodeAt(0)+";"})}
+var MOIS=["jan","fév","mar","avr","mai","juin","juil","août","sept","oct","nov","déc"],PR=[["Le Bateau du Rhin","Restaurateurs","c"],["Le Block","Restaurateurs","c"],["Dékalé","Restaurateurs","c"],["Boulangerie","Commerces","c"],["Kaleidoscope","Lieux culturels","e"],["Galerie Kraemer","Lieux culturels","e"],["Les ateliers éclairés","Lieux culturels","e"],["SPL des Deux Rives","Institutions","e"],["Élue de quartier","Institutions","u"]],cur=-1,ph=0,C=[["#F9D5B8","#C2410C","#1F4D3A"],["#CFE3D6","#1F4D3A","#E9A23B"],["#F6E1A8","#C2410C","#1F4D3A"],["#E6D3F0","#C2410C","#E9A23B"]];
+function ts(e){return e[6]||new Date(2026,10,e[0]).getTime()}
+function fl(l,i,t){return '<label class="s" for="'+i+'">'+l+'</label><input id="'+i+'"'+(t?' type="'+t+'"':'')+'>'}
+function pro(){var h="",p,g="";if(cur<0){h='<h2>Espace annonceur</h2><p class="s">Simulation : choisissez un profil pour voir ce que publie chaque acteur. Dans la vraie application, chacun aura son propre accès.</p>';PR.forEach(function(q,i){if(q[1]!=g){g=q[1];h+='<h2 style="font-size:18px;margin:20px 0 10px">'+g+'</h2>'}h+='<button class="c e" style="width:100%;text-align:left;border:0;color:var(--ink)" data-a="pro:'+i+'"><div class="d">'+q[0].charAt(0)+'</div><div class="v"><b>'+q[0]+'</b></div><span class="g">Se connecter</span></button>'})}
+else{p=PR[cur];h='<h2>'+p[0]+'</h2><p class="s">Profil annonceur · '+p[1]+'</p><button class="o" data-a="out">Se déconnecter</button><div style="height:16px"></div>';
+if(p[2]=="c")h+='<div class="c" style="gap:8px"><b>Publier le plat du jour ou une offre</b>'+fl("Plat ou offre","f1")+fl("Prix","f2")+'<button class="o" data-a="ph" aria-pressed="false">Ajouter une photo</button><button class="k" data-a="pubp">Publier</button></div>';
+if(p[2]!="u")h+='<div class="c" style="gap:8px"><b>Publier un événement</b>'+fl("Titre","f3")+fl("Date","f4","date")+fl("Heure","f5")+'<button class="k" data-a="pube">Publier l’événement</button></div>';
+else h+='<div class="c" style="gap:8px"><b>Mettre à jour mon actualité</b>'+fl("Actualité ou rendez-vous","f6")+fl("Date et lieu","f7")+'<button class="k" data-a="pubel">Publier</button></div>';
+h+='<button class="o" data-a="go:home">Voir l’accueil des habitants</button>'}
+$("#pro-c").innerHTML=h}
 function ev(e){return '<div class="c e"><div class="d">'+e[0]+'<small>'+e[1]+'</small></div><div class="v"><b>'+e[2]+'</b><span class="s">'+e[4]+'</span><span class="g">'+e[3]+'</span></div></div>'}
 function pls(){$("#pl-l").innerHTML=P.map(function(p){return '<div class="c"><div class="ph" style="background:'+p[3]+'"><svg style="--f1:'+p[4]+';--f2:'+p[5]+'" aria-hidden="true"><use href="#'+(p[6]?'bd':'pl')+'"/></svg><i>'+(p[7]||"Photo du restaurateur")+'</i></div><span class="g">'+p[0]+'</span><b>'+p[1]+'</b><span class="s">'+p[2]+'</span></div>'}).join("")}
 function evs(){$("#ev-3").innerHTML=E.slice(0,3).map(ev).join("");$("#chips").innerHTML=["Tous","Kaleidoscope","Galerie Kraemer","Les ateliers éclairés","SPL des Deux Rives","Restos"].map(function(c){return '<button data-a="chip:'+c+'" aria-pressed="'+(c==F)+'">'+c+'</button>'}).join("");$("#ev-l").innerHTML=E.filter(function(e){return F=="Tous"||e[5]==F}).map(ev).join("")}
@@ -105,9 +118,13 @@ function go(n){document.querySelectorAll(".view").forEach(function(s){s.classLis
 function tt(m){var t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(tt.h);tt.h=setTimeout(function(){t.style.display="none"},2600)}
 document.addEventListener("click",function(e){var b=e.target.closest("[data-a]");if(!b)return;var a=b.dataset.a.split(":"),k=a[0],v=a.slice(1).join(":");
 if(k=="go")go(v);else if(k=="chip"){F=v;evs()}else if(k=="vote"){var o=V[+v];o.m=!o.m;o.n+=o.m?1:-1;vos()}
-else if(k=="post"){var x=$("#tx").value.trim();if(!x){tt("Écrivez d’abord quelques mots.");return}V.unshift({t:x,n:0,w:1});$("#tx").value="";vos();tt("Merci ! Votre message sera publié après modération.")}
-else if(k=="plat"){P.unshift(["Votre restaurant","Votre plat du jour","[prix]","#E6D3F0","#C2410C","#E9A23B",0,"Publié à l’instant"]);pls();$(".p").scrollLeft=0;tt("Simulation : votre photo et votre plat apparaissent ici.")}
+else if(k=="post"){var x=$("#tx").value.trim();if(!x){tt("Écrivez d’abord quelques mots.");return}V.unshift({t:esc(x),n:0,w:1});$("#tx").value="";vos();tt("Merci ! Votre message sera publié après modération.")}
+else if(k=="pro"){cur=+v;ph=0;pro();window.scrollTo(0,0)}else if(k=="out"){cur=-1;pro()}
+else if(k=="ph"){ph=!ph;b.textContent=ph?"Photo ajoutée ✓":"Ajouter une photo";b.setAttribute("aria-pressed",ph)}
+else if(k=="pubp"){var d=$("#f1").value.trim();if(!d){tt("Indiquez le plat ou l’offre.");return}var cl=C[P.length%4];P.unshift([PR[cur][0],esc(d),esc($("#f2").value.trim()||"—"),cl[0],cl[1],cl[2],PR[cur][0]=="Boulangerie"?1:0,ph?"Photo du restaurateur":"Publié à l’instant"]);pls();$("#f1").value="";$("#f2").value="";tt("Publié : visible dans les plats du jour de l’accueil.")}
+else if(k=="pube"){var t=$("#f3").value.trim(),s=$("#f4").value;if(!t||!s){tt("Indiquez un titre et une date.");return}var dt=new Date(s+"T12:00"),q=PR[cur];E.push([dt.getDate(),MOIS[dt.getMonth()],esc(t),q[0],esc($("#f5").value.trim()||"—"),q[2]=="c"?"Restos":q[0],dt.getTime()]);E.sort(function(a,b){return ts(a)-ts(b)});evs();$("#f3").value="";tt("Événement publié : visible dans l’agenda.")}
+else if(k=="pubel"){var t2=$("#f6").value.trim();if(!t2){tt("Indiquez votre actualité.");return}$("#elu").innerHTML='<b>'+esc(t2)+'</b><span class="s">'+esc($("#f7").value.trim())+'</span>';tt("Actualité publiée sur l’accueil.")}
 else if(k=="t")tt(v+" : fiche pratique à compléter.")});
 $("#dt").textContent=new Date().toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
-pls();evs();trs();vos();go("home");
+pls();evs();trs();vos();pro();go("home");
 </script></body></html>
