@@ -30,9 +30,9 @@
 
 ## Feuille de route
 
-1. **Version 1 — démarrer simple** : agenda commun, plats du jour avec photos, actualités de l'élue, annuaire pratique.
+1. **Version 1 — démarrer simple** : agenda commun, plats du jour avec photos, actualités de l'élue et de la SPL des deux rives, annuaire pratique.
 2. **Version 2 — faire participer** : parole des habitants, transports en commun, galerie et ateliers éclairés, marchés et fêtes.
-3. **Version 3 — faire vivre** : écran d'affichage à Kaleidoscope, parcours d'art, mémoire du quartier, petites annonces et entraide.
+3. **Version 3 — faire vivre** : écran d'affichage à Kaleidoscope ?, parcours d'art, mémoire du quartier, petites annonces et entraide.
 
 **Prochaines étapes :** valider avec les acteurs pilotes, choisir l'outil de création de la version définitive, réserver le nom de domaine, désigner un modérateur.
 
@@ -64,7 +64,7 @@ Toutes les bonnes volontés sont bienvenues, avec ou sans compétences technique
 
 - **Vous avez une idée, un défaut à signaler, une fonction à demander ?** Ouvrez une [issue](../../issues) en décrivant simplement votre besoin.
 - **Vous codez ?** Faites un *fork* du dépôt, proposez vos changements dans une branche, puis ouvrez une *pull request*. Elle sera relue avant d'être intégrée : la branche `main` n'est pas modifiable directement.
-- **Vous représentez un commerce, un lieu, une association ou une institution ?** Écrivez-nous pour devenir acteur pilote : [contact à compléter].
+- **Vous représentez un commerce, un lieu, une association ou une institution ?** Écrivez-nous pour devenir acteur pilote : christophe@quartiercoop.fr.
 
 ## Limites connues de la simulation
 
@@ -76,8 +76,8 @@ Toutes les bonnes volontés sont bienvenues, avec ou sans compétences technique
 
 ## Licence
 
-[À choisir — par exemple MIT pour le code, CC BY pour les textes et illustrations. Sans licence, personne n'a le droit de réutiliser le contenu.]
+[À choisir ultérieuremenent — par exemple MIT pour le code, CC BY pour les textes et illustrations. Sans licence, personne n'a le droit de réutiliser le contenu.]
 
 ## Contact
 
-[À compléter : adresse e-mail ou collectif porteur du projet.]
+Christophe DOUNIAU christophe@quartiercoop.fr
