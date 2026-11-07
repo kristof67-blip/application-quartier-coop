@@ -25,14 +25,14 @@
 | **Paroles** | Signalements d'habitants, bouton « Moi aussi », modération avant publication |
 | **Plus** | Ateliers éclairés, galerie Kraemer, avancement des projets, annuaire pratique, abonnements, confort de lecture, règles |
 | **Espace annonceur** | Un profil par acteur (restaurateurs, commerces, lieux culturels, institutions, associations de quartier, modérateur) : publier, modifier, supprimer, voir les vues |
-| **Écran d'affichage** | Version paysage pour la télévision de Kaleidoscope, avec défilement automatique |
+| **Écran d'affichage** | Version paysage pour la télévision du Kaleidoscope, avec défilement automatique |
 | **Langues** | Français, anglais, allemand (menus et boutons principaux) |
 
 ## Feuille de route
 
 1. **Version 1 — démarrer simple** : agenda commun, plats du jour avec photos, actualités de l'élue et de la SPL des deux rives, annuaire pratique.
 2. **Version 2 — faire participer** : parole des habitants, transports en commun, galerie et ateliers éclairés, marchés et fêtes.
-3. **Version 3 — faire vivre** : écran d'affichage à Kaleidoscope ?, parcours d'art, mémoire du quartier, petites annonces et entraide.
+3. **Version 3 — faire vivre** : écran d'affichage au Kaleidoscope ?, parcours d'art, mémoire du quartier, petites annonces et entraide.
 
 **Prochaines étapes :** valider avec les acteurs pilotes, choisir l'outil de création de la version définitive, réserver le nom de domaine, désigner un modérateur.
 
