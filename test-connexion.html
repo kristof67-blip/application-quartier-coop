@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test de connexion – Quartier Coop</title>
+<style>
+body{font:16px/1.5 system-ui,sans-serif;max-width:560px;margin:0 auto;padding:20px;background:#FFF8EF;color:#2A211A}
+h1{font:600 28px/1.1 Georgia,serif;color:#9A3412}
+li{margin:8px 0}.ok{color:#1F4D3A}.ko{color:#9A3412;font-weight:700}
+button{min-height:46px;padding:0 18px;border:0;border-radius:14px;background:#C2410C;color:#FFF8EF;font:inherit;font-weight:700}
+button:disabled{opacity:.5}
+@media(prefers-color-scheme:dark){body{background:#1B1511;color:#FFF8EF}.ok{color:#86B49B}.ko{color:#FDBA74}h1{color:#FDBA74}}
+</style></head><body>
+<h1>Test de connexion</h1>
+<p>Cette page vérifie que le site parle bien à la base de données Supabase.</p>
+<ul id="r"></ul>
+<p><button id="b" disabled>Tester l’envoi d’un signalement</button></p>
+<p id="m"></p>
+<script src="config.js"></script>
+<script>
+var C=window.QC_CONFIG||{},r=document.getElementById("r"),m=document.getElementById("m"),b=document.getElementById("b");
+function li(ok,t){var e=document.createElement("li");e.className=ok?"ok":"ko";e.textContent=(ok?"✓ ":"✗ ")+t;r.appendChild(e)}
+function hd(){return{apikey:C.SUPABASE_ANON_KEY,Authorization:"Bearer "+C.SUPABASE_ANON_KEY}}
+function get(t,q){return fetch(C.SUPABASE_URL+"/rest/v1/"+t+"?"+q,{headers:hd()}).then(function(x){if(!x.ok)throw new Error(x.status);return x.json()})}
+var ok=C.SUPABASE_URL&&C.SUPABASE_ANON_KEY&&C.SUPABASE_URL.indexOf("VOTRE")<0&&C.SUPABASE_ANON_KEY.indexOf("VOTRE")<0;
+if(!ok){li(false,"config.js n’est pas encore complété (adresse du projet et clé publique).")}
+else{
+  li(true,"config.js est complété");
+  b.disabled=false;
+  [["acteurs","nom","acteurs"],["evenements","titre","événements"],["plats","titre","plats"]].forEach(function(t){
+    get(t[0],"select="+t[1]+"&limit=20").then(function(a){li(true,a.length+" "+t[2]+" lus dans la base")})
+    .catch(function(e){li(false,"Lecture de « "+t[2]+" » impossible (code "+e.message+"). Le script schema.sql a-t-il été exécuté ?")});
+  });
+}
+b.onclick=function(){
+  fetch(C.SUPABASE_URL+"/rest/v1/signalements",{method:"POST",headers:Object.assign({"Content-Type":"application/json",Prefer:"return=minimal"},hd()),body:JSON.stringify({texte:"Test de connexion (à supprimer)"})})
+  .then(function(x){m.textContent=x.ok?"Envoi accepté : le signalement attend la modération, il n’est pas public.":"Envoi refusé (code "+x.status+")."})
+  .catch(function(){m.textContent="Connexion impossible."});
+};
+</script></body></html>

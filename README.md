@@ -25,14 +25,14 @@
 | **Paroles** | Signalements d'habitants, bouton « Moi aussi », modération avant publication |
 | **Plus** | Ateliers éclairés, galerie Kraemer, avancement des projets, annuaire pratique, abonnements, confort de lecture, règles |
 | **Espace annonceur** | Un profil par acteur (restaurateurs, commerces, lieux culturels, institutions, associations de quartier, modérateur) : publier, modifier, supprimer, voir les vues |
-| **Écran d'affichage** | Version paysage pour la télévision du Kaleidoscope, avec défilement automatique |
+| **Écran d'affichage** | Version paysage pour la télévision de Kaleidoscope, avec défilement automatique |
 | **Langues** | Français, anglais, allemand (menus et boutons principaux) |
 
 ## Feuille de route
 
-1. **Version 1 — démarrer simple** : agenda commun, plats du jour avec photos, actualités de l'élue et de la SPL des deux rives, annuaire pratique.
+1. **Version 1 — démarrer simple** : agenda commun, plats du jour avec photos, actualités de l'élue, annuaire pratique.
 2. **Version 2 — faire participer** : parole des habitants, transports en commun, galerie et ateliers éclairés, marchés et fêtes.
-3. **Version 3 — faire vivre** : écran d'affichage au Kaleidoscope ?, parcours d'art, mémoire du quartier, petites annonces et entraide.
+3. **Version 3 — faire vivre** : écran d'affichage à Kaleidoscope, parcours d'art, mémoire du quartier, petites annonces et entraide.
 
 **Prochaines étapes :** valider avec les acteurs pilotes, choisir l'outil de création de la version définitive, réserver le nom de domaine, désigner un modérateur.
 
@@ -50,6 +50,23 @@
 |---|---|
 | `index.html` | La simulation complète (une seule page, sans installation) |
 | `README.md` | Ce document |
+| `schema.sql` | Structure de la base de données Supabase et règles de sécurité (à exécuter une fois dans Supabase) |
+| `config.js` | Adresse du projet Supabase et clé publique (jamais de clé secrète) |
+| `comptes.sql` | Modèle pour relier chaque compte annonceur à sa structure |
+| `test-connexion.html` | Page qui vérifie que le site parle bien à la base de données |
+
+## Avancement technique
+
+| Étape | Contenu | État |
+|---|---|---|
+| 1 | Base de données et règles de sécurité (`schema.sql`), test de connexion | Fait |
+| 2 | Agenda et plats du jour lus dans la base | Fait |
+| 3 | Connexion des annonceurs : publier, modifier, supprimer | Fait |
+| 4 | Photos de plats | À venir |
+| 5 | Paroles des habitants, soutiens, écran du modérateur | À venir |
+| 6 | Transports, abonnements, écran d'affichage, langues | À venir |
+
+Tant que `config.js` n'est pas complété, le site fonctionne en simulation avec des contenus fictifs. Une fois la base connectée, l'agenda et les plats du jour viennent de la base ; les autres rubriques restent des exemples jusqu'aux étapes suivantes.
 
 ## Tester la simulation
 
@@ -64,7 +81,7 @@ Toutes les bonnes volontés sont bienvenues, avec ou sans compétences technique
 
 - **Vous avez une idée, un défaut à signaler, une fonction à demander ?** Ouvrez une [issue](../../issues) en décrivant simplement votre besoin.
 - **Vous codez ?** Faites un *fork* du dépôt, proposez vos changements dans une branche, puis ouvrez une *pull request*. Elle sera relue avant d'être intégrée : la branche `main` n'est pas modifiable directement.
-- **Vous représentez un commerce, un lieu, une association ou une institution ?** Écrivez-nous pour devenir acteur pilote : christophe@quartiercoop.fr.
+- **Vous représentez un commerce, un lieu, une association ou une institution ?** Écrivez-nous pour devenir acteur pilote : [contact à compléter].
 
 ## Limites connues de la simulation
 
@@ -76,8 +93,8 @@ Toutes les bonnes volontés sont bienvenues, avec ou sans compétences technique
 
 ## Licence
 
-[À choisir ultérieuremenent — par exemple MIT pour le code, CC BY pour les textes et illustrations. Sans licence, personne n'a le droit de réutiliser le contenu.]
+[À choisir — par exemple MIT pour le code, CC BY pour les textes et illustrations. Sans licence, personne n'a le droit de réutiliser le contenu.]
 
 ## Contact
 
-Christophe DOUNIAU christophe@quartiercoop.fr
+[À compléter : adresse e-mail ou collectif porteur du projet.]
