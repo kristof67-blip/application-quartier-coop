@@ -52,6 +52,8 @@
 | `README.md` | Ce document |
 | `schema.sql` | Structure de la base de données Supabase et règles de sécurité (à exécuter une fois dans Supabase) |
 | `config.js` | Adresse du projet Supabase et clé publique (jamais de clé secrète) |
+| `paroles.sql` | Désignation du modérateur et garde-fou contre les envois en masse (à exécuter une fois dans Supabase) |
+| `storage.sql` | Espace de stockage des photos de plats et ses règles (à exécuter une fois dans Supabase) |
 | `comptes.sql` | Modèle pour relier chaque compte annonceur à sa structure |
 | `test-connexion.html` | Page qui vérifie que le site parle bien à la base de données |
 
@@ -62,8 +64,8 @@
 | 1 | Base de données et règles de sécurité (`schema.sql`), test de connexion | Fait |
 | 2 | Agenda et plats du jour lus dans la base | Fait |
 | 3 | Connexion des annonceurs : publier, modifier, supprimer | Fait |
-| 4 | Photos de plats | À venir |
-| 5 | Paroles des habitants, soutiens, écran du modérateur | À venir |
+| 4 | Photos de plats (envoi, compression, stockage) | Fait |
+| 5 | Paroles des habitants, soutiens, écran du modérateur | Fait |
 | 6 | Transports, abonnements, écran d'affichage, langues | À venir |
 
 Tant que `config.js` n'est pas complété, le site fonctionne en simulation avec des contenus fictifs. Une fois la base connectée, l'agenda et les plats du jour viennent de la base ; les autres rubriques restent des exemples jusqu'aux étapes suivantes.
