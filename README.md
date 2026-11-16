@@ -2,7 +2,7 @@
 
 > Informer, relier et donner la parole à tout un quartier.
 
-**Quartier Coop** est un projet de site web et d'application mobile (webapp) pour les habitants, les commerçants, les lieux culturels et les institutions du quartier Coop. Elle rassemble au même endroit ce qui est aujourd'hui dispersé : événements, plats du jour, actualités, transports, signalements d'habitants, marchés et fêtes à proximité.
+**Quartier Coop** est un projet de site web et d'application mobile (webapp) pour les habitants, les commerçants, les lieux culturels et les institutions du quartier Coop. Elle rassemble au même endroit ce qui est aujourd'hui dispersé : événements, plats du jour, actualités, transports, sujets proposés par les habitants, marchés et fêtes à proximité.
 
 **Simulation en ligne :** https://kristof67-blip.github.io/application-quartier-coop/
 
@@ -22,7 +22,7 @@
 | **Accueil** | Alertes, plats du jour en photo, bons plans, prochains événements, élue de quartier, marchés et fêtes à proximité |
 | **Agenda** | Événements de tous les acteurs, filtrables par lieu |
 | **Transports** | Prochains passages aux arrêts du quartier (données d'exemple) |
-| **Paroles** | Signalements d'habitants, bouton « Moi aussi », modération avant publication |
+| **Paroles** | Sujets proposés par les habitants, bouton « Moi aussi », réponses entre habitants inscrits, modération |
 | **Plus** | Ateliers éclairés, galerie Kraemer, avancement des projets, annuaire pratique, abonnements, confort de lecture, règles |
 | **Espace annonceur** | Un profil par acteur (restaurateurs, commerces, lieux culturels, institutions, associations de quartier, modérateur) : publier, modifier, supprimer, voir les vues |
 | **Écran d'affichage** | Version paysage pour la télévision de Kaleidoscope, avec défilement automatique |
@@ -40,7 +40,7 @@
 
 - **Accessible à tous** : grandes polices, contrastes forts, mots simples ; options « texte agrandi » et « contraste renforcé ».
 - **Données personnelles minimales** : aucun compte n'est nécessaire pour lire ; pour répondre aux autres habitants, un compte (e-mail privé, pseudo public) est demandé et peut être supprimé en un clic ; pas de publicité, pas de revente de données. *(Cadre RGPD à faire valider — responsable du traitement : [à désigner].)*
-- **Modération** : les signalements des habitants sont relus par un modérateur désigné par le collectif avant publication *(délai : [à définir])*.
+- **Modération** : les sujets proposés par les habitants sont relus par un modérateur désigné par le collectif avant publication *(délai : [à définir])*.
 - **Référents par structure** : chaque acteur désigne un référent et un suppléant autorisés à publier, pour que le site reste vivant si une personne part.
 - **Charte de contribution** : sont refusés les propos injurieux ou discriminatoires, les données personnelles de tiers, la publicité extérieure au quartier et les informations non vérifiées.
 
@@ -52,7 +52,7 @@
 | `README.md` | Ce document |
 | `schema.sql` | Structure de la base de données Supabase et règles de sécurité (à exécuter une fois dans Supabase) |
 | `config.js` | Adresse du projet Supabase et clé publique (jamais de clé secrète) |
-| `forum.sql` | Comptes habitants (pseudo), réponses sous les signalements, signalement de messages, suppression de compte (à exécuter une fois dans Supabase) |
+| `forum.sql` | Comptes habitants (pseudo), réponses sous les sujets, signalement d'abus, suppression de compte (à exécuter une fois dans Supabase) |
 | `paroles.sql` | Désignation du modérateur et garde-fou contre les envois en masse (à exécuter une fois dans Supabase) |
 | `storage.sql` | Espace de stockage des photos de plats et ses règles (à exécuter une fois dans Supabase) |
 | `comptes.sql` | Modèle pour relier chaque compte annonceur à sa structure |
@@ -67,7 +67,7 @@
 | 3 | Connexion des annonceurs : publier, modifier, supprimer | Fait |
 | 4 | Photos de plats (envoi, compression, stockage) | Fait |
 | 5 | Paroles des habitants, soutiens, écran du modérateur | Fait |
-| 5 bis | Échanges entre habitants : comptes, pseudos, réponses, signalement de messages | Code livré, à tester |
+| 5 bis | Échanges entre habitants : comptes, pseudos, réponses, signalement d'abus | Code livré, en test |
 | 6 | Transports, abonnements, écran d'affichage, langues | À venir |
 
 Tant que `config.js` n'est pas complété, le site fonctionne en simulation avec des contenus fictifs. Une fois la base connectée, l'agenda et les plats du jour viennent de la base ; les autres rubriques restent des exemples jusqu'aux étapes suivantes.
