@@ -113,6 +113,12 @@ Toutes les bonnes volontés sont bienvenues, avec ou sans compétences technique
 - La traduction ne couvre pas les contenus publiés par les acteurs.
 - Les polices sont chargées depuis Google Fonts ; la version définitive devra les héberger elle-même pour limiter les échanges avec des tiers.
 
+## Passage en ligne officielle
+
+- Dans `config.js`, ajouter la ligne `LANCEMENT: true,` dans `window.QC_CONFIG` (après `SUPABASE_ANON_KEY`) : le bandeau « Version de test » disparaît de l'accueil.
+- Supprimer `test-connexion.html` du dépôt.
+- Polices : les fichiers `fraunces-600.woff2`, `dm-sans-400.woff2`, `dm-sans-600.woff2` et `dm-sans-700.woff2` se déposent dans un dossier `fonts/` à côté de `index.html` (aucun appel à Google). Sans ces fichiers, le site utilise des polices de remplacement du système.
+
 ## Licence
 
 Le code est visible et chacun peut proposer des améliorations. En revanche, il n'est pas libre de réutilisation : pour créer un autre site à partir de celui-ci, l'accord écrit préalable de l'auteur est nécessaire (voir le fichier `LICENSE`). Le nom « Quartier Coop » et son logo sont réservés. En proposant une contribution, vous acceptez les conditions de l'article 3 de la licence.
@@ -120,3 +126,7 @@ Le code est visible et chacun peut proposer des améliorations. En revanche, il 
 ## Contact
 
 Christophe Douniau : hello@quartiercoop.fr
+
+## Thèmes saisonniers
+
+L'accueil change tout seul selon la date : Noël, hiver, Pâques (date calculée chaque année), printemps, 14 juillet, été, rentrée, automne et Halloween. Pour tester un thème sans attendre la date, ajouter `?saison=noel` (ou `hiver`, `paques`, `printemps`, `juillet`, `ete`, `rentree`, `automne`, `halloween`) à l'adresse du site. Les animations s'arrêtent avec le bouton « Animations de saison » du menu Plus, et par défaut sur les appareils réglés pour réduire les mouvements.
