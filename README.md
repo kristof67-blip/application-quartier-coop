@@ -56,6 +56,8 @@
 | `paroles.sql` | Désignation du modérateur et garde-fou contre les envois en masse (à exécuter une fois dans Supabase) |
 | `transports.sql` | Liste des arrêts de transport (Starcoop, Capitainerie, Coopérative) pour la future version temps réel |
 | `roles.sql` | Rôles (propriétaire, administrateur, modérateur, référent, suppléant), demandes d'accès pro, nomination d'administrateurs en double validation, publication au nom d'une structure, journal (à exécuter une fois dans Supabase) |
+| `elue.sql` | Actualités de l'élue, de la SPL et des associations sur l'accueil, réponses officielles aux sujets des habitants (à exécuter après `roles.sql`) |
+| `noms.sql` | Intitulés de structures modifiables par les administrateurs (code interne stable), pseudos « élu » réservés (à exécuter après `roles.sql`) |
 | `scripts/horaires.py` | Calcule chaque jour les passages prévus aux 3 arrêts à partir des horaires ouverts de la CTS |
 | `.github/workflows/horaires.yml` | Lance ce calcul automatiquement tous les jours et enregistre `horaires.json` |
 | `horaires.json` | Passages prévus des 3 prochains jours (généré automatiquement) |
@@ -75,6 +77,8 @@
 | 5 bis | Échanges entre habitants : comptes, pseudos, réponses, signalement d'abus | Fait |
 | 6a | Transports : passages prévus aux arrêts Starcoop, Capitainerie, Coopérative (horaires théoriques) | Fait |
 | 6a bis | Rôles et administration : demandes d'accès pro, double validation des administrateurs, « publier au nom de », journal (`roles.sql`) | Fait (à tester) |
+| 6a ter | Actualités et réponses officielles de l'élue, de la SPL et des associations (`elue.sql`) | Fait (à tester) |
+| 6a quater | Renommer une structure sans perdre ses droits (`noms.sql`) | Fait (à tester) |
 | 6b | Transports en temps réel (token CTS demandé) | En attente |
 | 6c | Abonnements, écran d'affichage, langues | À venir |
 
