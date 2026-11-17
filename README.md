@@ -54,6 +54,10 @@
 | `config.js` | Adresse du projet Supabase et clé publique (jamais de clé secrète) |
 | `forum.sql` | Comptes habitants (pseudo), réponses sous les sujets, signalement d'abus, suppression de compte (à exécuter une fois dans Supabase) |
 | `paroles.sql` | Désignation du modérateur et garde-fou contre les envois en masse (à exécuter une fois dans Supabase) |
+| `transports.sql` | Liste des arrêts de transport (Starcoop, Capitainerie, Coopérative) pour la future version temps réel |
+| `scripts/horaires.py` | Calcule chaque jour les passages prévus aux 3 arrêts à partir des horaires ouverts de la CTS |
+| `.github/workflows/horaires.yml` | Lance ce calcul automatiquement tous les jours et enregistre `horaires.json` |
+| `horaires.json` | Passages prévus des 3 prochains jours (généré automatiquement) |
 | `storage.sql` | Espace de stockage des photos de plats et ses règles (à exécuter une fois dans Supabase) |
 | `comptes.sql` | Modèle pour relier chaque compte annonceur à sa structure |
 | `test-connexion.html` | Page qui vérifie que le site parle bien à la base de données |
@@ -68,7 +72,9 @@
 | 4 | Photos de plats (envoi, compression, stockage) | Fait |
 | 5 | Paroles des habitants, soutiens, écran du modérateur | Fait |
 | 5 bis | Échanges entre habitants : comptes, pseudos, réponses, signalement d'abus | Code livré, en test |
-| 6 | Transports, abonnements, écran d'affichage, langues | À venir |
+| 6a | Transports : passages prévus aux arrêts Starcoop, Capitainerie, Coopérative (horaires théoriques) | Code livré, à tester |
+| 6b | Transports en temps réel (token CTS demandé) | En attente |
+| 6c | Abonnements, écran d'affichage, langues | À venir |
 
 Tant que `config.js` n'est pas complété, le site fonctionne en simulation avec des contenus fictifs. Une fois la base connectée, l'agenda et les plats du jour viennent de la base ; les autres rubriques restent des exemples jusqu'aux étapes suivantes.
 
