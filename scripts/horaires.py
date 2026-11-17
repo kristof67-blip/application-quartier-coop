@@ -13,8 +13,11 @@ from zoneinfo import ZoneInfo
 ARRETS = [("Starcoop", "tram"), ("Capitainerie", "bus"), ("Coopérative", "bus")]
 JOURS = 3  # nombre de jours de passages conservés (aujourd'hui compris)
 PARIS = ZoneInfo("Europe/Paris")
-API = "https://transport.data.gouv.fr/api/datasets/"
-SLUGS = ["gtfs-strasbourg", "donnees-theoriques-gtfs-et-temps-reel-siri-lite-du-reseau-cts"]
+# Fichier principal (zip GTFS) du jeu de données « Données théoriques (GTFS) et temps réel (SIRI-lite) du réseau CTS »
+# sur data.gouv.fr : cette adresse « permanente » redirige toujours vers la version la plus récente.
+URL_PRINCIPALE = "https://www.data.gouv.fr/api/1/datasets/r/eeea9e52-4f8a-459e-aef5-a093a3b05356"
+API_DATAGOUV = "https://www.data.gouv.fr/api/1/datasets/donnees-theoriques-gtfs-et-temps-reel-siri-lite-du-reseau-cts/"
+API_PAN = "https://transport.data.gouv.fr/api/datasets/donnees-theoriques-gtfs-et-temps-reel-siri-lite-du-reseau-cts"
 SECOURS = "http://opendata.cts-strasbourg.fr/fichiers/gtfs/google_transit.zip"
 UA = {"User-Agent": "quartier-coop-horaires/1.0"}
 
@@ -30,16 +33,40 @@ def telecharger(url):
         return r.read()
 
 
-def trouver_url():
-    for slug in SLUGS:
+def adresses_candidates():
+    """Adresses à essayer, dans l'ordre. Les suivantes ne servent que si la première échoue."""
+    yield URL_PRINCIPALE
+    for api in (API_DATAGOUV, API_PAN):
         try:
-            d = json.loads(telecharger(API + slug))
+            d = json.loads(telecharger(api))
             for r in d.get("resources", []):
-                if (r.get("format") or "").upper() == "GTFS" and r.get("url"):
-                    return r["url"]
+                fmt = (r.get("format") or "").lower()
+                if (fmt in ("gtfs", "zip") or str(r.get("url", "")).lower().endswith(".zip")) and r.get("url"):
+                    yield r["url"]
         except Exception as e:  # noqa: BLE001
-            print("API indisponible pour", slug, ":", e)
-    return SECOURS
+            print("Interface indisponible :", api, ":", e)
+    yield SECOURS
+
+
+def charger_gtfs():
+    """Télécharge le premier fichier GTFS valide parmi les adresses candidates."""
+    erreurs = []
+    for url in adresses_candidates():
+        try:
+            print("Essai :", url)
+            brut = telecharger(url)
+            if not zipfile.is_zipfile(io.BytesIO(brut)):
+                raise ValueError("ce n'est pas un fichier zip")
+            with zipfile.ZipFile(io.BytesIO(brut)) as z:
+                if "stops.txt" not in z.namelist():
+                    raise ValueError("pas de stops.txt dans le zip")
+            print("Fichier reçu :", len(brut), "octets")
+            return brut
+        except Exception as e:  # noqa: BLE001
+            print("Échec :", url, ":", e)
+            erreurs.append(f"{url} : {e}")
+    print("::error::Aucune adresse n'a fourni de fichier GTFS valide. " + " | ".join(erreurs))
+    sys.exit(1)
 
 
 def lire(z, nom):
@@ -143,14 +170,7 @@ def main():
     if a.local:
         brut = open(a.local, "rb").read()
     else:
-        url = trouver_url()
-        print("Téléchargement :", url)
-        try:
-            brut = telecharger(url)
-        except Exception as e:  # noqa: BLE001
-            print(f"::error::Téléchargement impossible depuis {url} : {e}")
-            raise
-        print("Fichier reçu :", len(brut), "octets")
+        brut = charger_gtfs()
     with zipfile.ZipFile(io.BytesIO(brut)) as z:
         res = extraire(z, aujourdhui)
     if not any(a_["passages"] for a_ in res["arrets"]):
