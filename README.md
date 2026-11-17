@@ -103,7 +103,7 @@ Toutes les bonnes volontés sont bienvenues, avec ou sans compétences technique
 
 - **Vous avez une idée, un défaut à signaler, une fonction à demander ?** Ouvrez une [issue](../../issues) en décrivant simplement votre besoin.
 - **Vous codez ?** Faites un *fork* du dépôt, proposez vos changements dans une branche, puis ouvrez une *pull request*. Elle sera relue avant d'être intégrée : la branche `main` n'est pas modifiable directement.
-- **Vous représentez un commerce, un lieu, une association ou une institution ?** Écrivez-nous pour devenir acteur pilote : [contact à compléter].
+- **Vous représentez un commerce, un lieu, une association ou une institution ?** Écrivez-nous pour devenir acteur pilote : hello@quartiercoop.fr.
 
 ## Limites connues de la simulation
 
@@ -115,8 +115,8 @@ Toutes les bonnes volontés sont bienvenues, avec ou sans compétences technique
 
 ## Licence
 
-[À choisir — par exemple MIT pour le code, CC BY pour les textes et illustrations. Sans licence, personne n'a le droit de réutiliser le contenu.]
+Le code est visible et chacun peut proposer des améliorations. En revanche, il n'est pas libre de réutilisation : pour créer un autre site à partir de celui-ci, l'accord écrit préalable de l'auteur est nécessaire (voir le fichier `LICENSE`). Le nom « Quartier Coop » et son logo sont réservés. En proposant une contribution, vous acceptez les conditions de l'article 3 de la licence.
 
 ## Contact
 
-[À compléter : adresse e-mail ou collectif porteur du projet.]
+Christophe Douniau : hello@quartiercoop.fr
