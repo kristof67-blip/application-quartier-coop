@@ -59,6 +59,7 @@
 | `elue.sql` | Actualités de l'élue, de la SPL et des associations sur l'accueil, réponses officielles aux sujets des habitants (à exécuter après `roles.sql`) |
 | `noms.sql` | Intitulés de structures modifiables par les administrateurs (code interne stable), pseudos « élu » réservés (à exécuter après `roles.sql`) |
 | `equipes.sql` | Les référents désignent et retirent leurs suppléants depuis « Mon compte » (à exécuter après `roles.sql`) |
+| `bonsplans.sql` | Rubrique « Bons plans » réservée aux restaurateurs et commerces : offres limitées dans le temps, indépendantes les unes des autres (à exécuter après `medias.sql`) |
 | `medias.sql` | Photos et liens web (https) sur les événements et les actualités (à exécuter après `elue.sql`) |
 | `scripts/horaires.py` | Calcule chaque jour les passages prévus aux 3 arrêts à partir des horaires ouverts de la CTS |
 | `.github/workflows/horaires.yml` | Lance ce calcul automatiquement tous les jours et enregistre `horaires.json` |
@@ -83,6 +84,7 @@
 | 6a quater | Renommer une structure sans perdre ses droits (`noms.sql`) | Fait (à tester) |
 | 6a quinquies | Équipes : le référent désigne ses suppléants ; agenda : filtre « Associations de quartier » pour toute association (`equipes.sql`) | Fait (à tester) |
 | 6a sexies | Photos et liens sur événements et actualités ; guide des accès pro dans « Plus » (`medias.sql`) | Fait (à tester) |
+| 6a septies | Bons plans réservés aux restaurateurs et commerces, côte à côte sur l'accueil, 2 maximum par structure, 30 jours maximum (`bonsplans.sql`) | Fait (à tester) |
 | 6b | Transports en temps réel (token CTS demandé) | En attente |
 | 6c | Abonnements, écran d'affichage, langues | À venir |
 
