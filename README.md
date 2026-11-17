@@ -55,6 +55,7 @@
 | `forum.sql` | Comptes habitants (pseudo), réponses sous les sujets, signalement d'abus, suppression de compte (à exécuter une fois dans Supabase) |
 | `paroles.sql` | Désignation du modérateur et garde-fou contre les envois en masse (à exécuter une fois dans Supabase) |
 | `transports.sql` | Liste des arrêts de transport (Starcoop, Capitainerie, Coopérative) pour la future version temps réel |
+| `roles.sql` | Rôles (propriétaire, administrateur, modérateur, référent, suppléant), demandes d'accès pro, nomination d'administrateurs en double validation, publication au nom d'une structure, journal (à exécuter une fois dans Supabase) |
 | `scripts/horaires.py` | Calcule chaque jour les passages prévus aux 3 arrêts à partir des horaires ouverts de la CTS |
 | `.github/workflows/horaires.yml` | Lance ce calcul automatiquement tous les jours et enregistre `horaires.json` |
 | `horaires.json` | Passages prévus des 3 prochains jours (généré automatiquement) |
@@ -71,8 +72,9 @@
 | 3 | Connexion des annonceurs : publier, modifier, supprimer | Fait |
 | 4 | Photos de plats (envoi, compression, stockage) | Fait |
 | 5 | Paroles des habitants, soutiens, écran du modérateur | Fait |
-| 5 bis | Échanges entre habitants : comptes, pseudos, réponses, signalement d'abus | Code livré, en test |
-| 6a | Transports : passages prévus aux arrêts Starcoop, Capitainerie, Coopérative (horaires théoriques) | Code livré, à tester |
+| 5 bis | Échanges entre habitants : comptes, pseudos, réponses, signalement d'abus | Fait |
+| 6a | Transports : passages prévus aux arrêts Starcoop, Capitainerie, Coopérative (horaires théoriques) | Fait |
+| 6a bis | Rôles et administration : demandes d'accès pro, double validation des administrateurs, « publier au nom de », journal (`roles.sql`) | Fait (à tester) |
 | 6b | Transports en temps réel (token CTS demandé) | En attente |
 | 6c | Abonnements, écran d'affichage, langues | À venir |
 
