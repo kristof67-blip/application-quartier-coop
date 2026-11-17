@@ -1,4 +1,4 @@
-voudrais# Quartier Coop — la webapp des habitants
+# Quartier Coop — la webapp des habitants
 
 > Informer, relier et donner la parole à tout un quartier.
 
@@ -42,7 +42,7 @@ voudrais# Quartier Coop — la webapp des habitants
 - **Données personnelles minimales** : aucun compte n'est nécessaire pour lire ; pour répondre aux autres habitants, un compte (e-mail privé, pseudo public) est demandé et peut être supprimé en un clic ; pas de publicité, pas de revente de données. *(Cadre RGPD à faire valider — responsable du traitement : [à désigner].)*
 - **Modération** : les sujets proposés par les habitants sont relus par un modérateur désigné par le collectif avant publication *(délai : [à définir])*.
 - **Référents par structure** : chaque acteur désigne un référent et un suppléant autorisés à publier, pour que le site reste vivant si une personne part.
-- **Charte de contribution** : sont refusés les propos injurieux ou discriminatoires, les données personnelles de tiers, la publicité extérieure au quartier et les informations non vérifiées.
+- **Charte de contribution** : sont refusés les propos injurieux ou discriminatoires, les propos politiques et le prosélytisme politique, les données personnelles de tiers, la publicité extérieure au quartier et les informations non vérifiées.
 
 ## Contenu du dépôt
 
