@@ -86,6 +86,10 @@ def extraire(z, aujourdhui):
     for nom, _ in ARRETS:
         ids = [i for i, n in stops.items() if n == nom]
         print(f"Arrêt « {nom} » : {len(ids)} point(s) d'arrêt trouvé(s) {ids}")
+        if not ids:
+            debut = norm(nom)[:5]
+            proches = sorted({s["stop_name"] for s in lire(z, "stops.txt") if debut in norm(s["stop_name"])})
+            print(f"::warning::Arrêt « {nom} » introuvable. Noms proches dans les données : {proches[:20]}")
     if candidats:
         print("Noms voisins ignorés (vérifiez si l'un d'eux est le bon) :", sorted(candidats))
 
@@ -141,15 +145,27 @@ def main():
     else:
         url = trouver_url()
         print("Téléchargement :", url)
-        brut = telecharger(url)
+        try:
+            brut = telecharger(url)
+        except Exception as e:  # noqa: BLE001
+            print(f"::error::Téléchargement impossible depuis {url} : {e}")
+            raise
+        print("Fichier reçu :", len(brut), "octets")
     with zipfile.ZipFile(io.BytesIO(brut)) as z:
         res = extraire(z, aujourdhui)
     if not any(a_["passages"] for a_ in res["arrets"]):
-        sys.exit("Aucun passage trouvé : le fichier n'est pas écrit (vérifiez les noms d'arrêts).")
+        print("::error::Aucun passage trouvé : le fichier n'est pas écrit. Vérifiez les noms d'arrêts (voir les lignes « introuvable » ci-dessus).")
+        sys.exit(1)
     with open(a.sortie, "w", encoding="utf-8") as f:
         json.dump(res, f, ensure_ascii=False, separators=(",", ":"))
     print("Écrit :", a.sortie)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except SystemExit:
+        raise
+    except Exception as e:  # noqa: BLE001
+        print(f"::error::{type(e).__name__} : {e}")
+        raise
