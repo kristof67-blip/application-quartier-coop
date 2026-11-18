@@ -1,0 +1,35 @@
+PASTILLES DES STRUCTURES — Quartier Coop
+
+Chaque structure peut avoir une petite image ronde à côté de son nom
+(agenda, plats du jour, bons plans, liste des structures).
+Sans image, une lettre colorée s'affiche.
+
+COMMENT AJOUTER UNE PASTILLE
+1. Déposez l'image dans CE dossier (« pastilles ») du dépôt GitHub : Add file > Upload files.
+2. Le nom du fichier doit être EXACTEMENT celui du tableau ci-dessous, en minuscules, avec l'extension .jpg
+3. Validez (Commit changes), attendez une minute, puis rafraîchissez le site (Ctrl+F5).
+
+RÈGLE POUR LES NOMS DE FICHIER
+Le nom de la structure, en minuscules, sans accents, avec des tirets à la place des espaces et des signes.
+Exemple : « Les ateliers éclairés » devient les-ateliers-eclaires.jpg
+Si la structure est renommée, renommez aussi le fichier.
+
+IMAGE CONSEILLÉE
+JPG carré, 400 x 400 pixels (200 minimum), moins de 100 Ko, sujet centré (l'image est découpée en cercle).
+
+NOMS DE FICHIER DES STRUCTURES ACTUELLES
+  Le Bateau du Rhin                -> le-bateau-du-rhin.jpg
+  Le Block                         -> le-block.jpg
+  Dékalé                           -> dekale.jpg
+  Boulangerie                      -> boulangerie.jpg
+  Kaleidoscoop                     -> kaleidoscoop.jpg
+  Galerie Kraemer                  -> galerie-kraemer.jpg
+  Les ateliers éclairés            -> les-ateliers-eclaires.jpg
+  SPL des Deux Rives               -> spl-des-deux-rives.jpg
+  Associations de quartier         -> associations-de-quartier.jpg
+  La Basse Cour des Miracles       -> la-basse-cour-des-miracles.jpg
+  Le Garage Coop                   -> le-garage-coop.jpg
+  Le Cric                          -> le-cric.jpg
+
+Nouvelle structure : prenez son nom exact tel qu'il s'affiche sur le site, et appliquez la règle ci-dessus.
+L'élue de quartier a son propre avatar dessiné ; pour le remplacer par une photo, déposez elue.jpg à côté de index.html.
