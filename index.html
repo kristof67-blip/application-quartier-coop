@@ -92,7 +92,7 @@ nav{width:min(720px,calc(100% - 32px));bottom:12px;border-radius:20px}
 .hero .lg{justify-content:center}
 .hero h1{transform:rotate(-3deg);margin:22px 0 10px;font-family:Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.02em;line-height:1;font-size:clamp(38px,11.5vw,56px)}
 .hero .hl{color:var(--ha,#ffb92d)}
-.hero .wm{font:600 24px/1 'Fraunces',Georgia,serif;color:var(--ha,#ffb92d);margin:18px 0 0}
+.hero>svg.wm{position:static;right:auto;bottom:auto;display:block;width:min(240px,62%);height:auto;aspect-ratio:1200/560;margin:10px auto 0;--lt:#FFF7ED}
 .hero .ph1{max-width:none;white-space:nowrap;margin:6px 0 14px;font-size:clamp(12px,3.3vw,24px);line-height:1.4}
 .vb{position:relative;display:inline-block;margin-right:.45em;font-weight:700;color:var(--on);animation:vb 4.8s cubic-bezier(.2,1.6,.4,1) infinite;animation-delay:var(--d,0s)}
 .vb::before,.vb::after{content:"";position:absolute;left:50%;top:50%;width:2px;height:2px;margin:-1px 0 0 -1px;border-radius:50%;opacity:0;pointer-events:none;animation:vsp 4.8s cubic-bezier(.1,.8,.3,1) infinite;animation-delay:var(--d,0s)}
@@ -132,7 +132,7 @@ html.noanim .q{display:none}
 .tv .sun{width:26cqw;height:26cqw;right:-5cqw;top:-8cqw}
 .tv:fullscreen .q{scale:2.2}
 .tvh{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:3}
-.tvl{font:600 2.8cqw Fraunces,Georgia,serif;color:var(--ha)}
+.tvl{display:block;width:17cqw;aspect-ratio:1200/560;--lt:#FFF7ED}
 .tvt{font-size:2.2cqw;font-weight:600;opacity:.92}.tvt::first-letter{text-transform:uppercase}
 .tvc{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;justify-content:center;gap:1.8cqw;max-width:70%;padding-bottom:3cqw}
 .tvc h3{margin:0;font:900 5.8cqw/1.05 Arial,Helvetica,sans-serif;letter-spacing:-.02em;animation:tvin .7s both}
@@ -190,13 +190,14 @@ html.kiosk .tv,html.veille .tv{position:fixed;inset:0;z-index:1000;aspect-ratio:
 .tvr .dt small{font-size:1.5cqw;margin-top:.2cqw}
 .tvph .vb{margin-right:.7em}
 html.kiosk .q,html.veille .q{scale:2.2}
-</style></head><body>
+</style><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2230%22%20fill%3D%22%23FF7A00%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22%20transform%3D%22translate%287%2C9%29%20scale%28.78%29%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2222%22%20r%3D%228%22/%3E%3Ccircle%20cx%3D%2244%22%20cy%3D%2222%22%20r%3D%228%22/%3E%3Cpath%20d%3D%22M6%2052c0-10%206-16%2014-16s14%206%2014%2016M30%2052c0-10%206-16%2014-16s14%206%2014%2016%22/%3E%3C/g%3E%3C/svg%3E"></head><body>
 <div id="cft"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="pl" viewBox="0 0 120 80"><circle cx="60" cy="42" r="34" fill="#fff"/><circle cx="60" cy="42" r="24" fill="#F3E4D0"/><circle cx="52" cy="38" r="8" fill="var(--f1)"/><circle cx="68" cy="46" r="7" fill="var(--f2)"/><path d="M48 52q10 8 24 0" stroke="var(--f1)" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
 <symbol id="bd" viewBox="0 0 120 80"><ellipse cx="60" cy="44" rx="42" ry="20" fill="#C98A3D"/><path d="M36 38l12 12M54 34l12 14M72 34l12 12" stroke="#F3D9A8" stroke-width="4" stroke-linecap="round"/></symbol>
 <symbol id="sc" viewBox="0 0 190 100"><circle cx="30" cy="22" r="14" fill="#FDBA74"/><path d="M6 100V60l24-22 24 22v40zM58 100V48l28-26 28 26v52zM118 100V64l20-18 20 18v36z" fill="#FFF8EF"/><path d="M24 70h12v14H24zM78 56h12v14H78zM78 80h12v10H78zM132 74h12v12h-12z" fill="#C2410C"/><circle cx="174" cy="62" r="14" fill="#86B49B"/><path d="M172 76h4v24h-4z" fill="#1F4D3A"/></symbol>
-<symbol id="i-h" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3z"/><path d="M9 21v-6h6v6"/></symbol>
+<symbol id="i-logo" viewBox="0 0 1200 560">
+<path d="M270 510 H930 a225 225 0 0 0 0 -450 H270 a225 225 0 0 0 -225 225 a225 225 0 0 0 68 160" fill="none" stroke="#FF7A00" stroke-width="46" stroke-linecap="round"/><g transform="translate(405,270)"><circle r="64" fill="#FF7A00"/><g transform="translate(-38,-38) scale(1.18)" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="22" r="8"/><circle cx="44" cy="22" r="8"/><path d="M6 52c0-10 6-16 14-16s14 6 14 16M30 52c0-10 6-16 14-16s14 6 14 16"/></g></g><g transform="translate(535,270)"><circle r="64" fill="#FF7A00"/><g transform="translate(-38,-38) scale(1.18)" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8v14M12 8v10a6 6 0 0 0 12 0V8M18 22v26M44 48V8c-7 5-10 15-8 26h8" /></g></g><g transform="translate(665,270)"><circle r="64" fill="#FF7A00"/><g transform="translate(-38,-38) scale(1.18)" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8C17 8 6 19 6 32s11 24 24 24c5 0 7-3 6-6-1-3 1-6 5-6h8c6 0 10-4 10-10C59 18 47 8 32 8z"/><circle cx="19" cy="31" r="2.6"/><circle cx="26" cy="19" r="2.6"/><circle cx="39" cy="18" r="2.6"/><circle cx="48" cy="28" r="2.6"/></g></g><g transform="translate(795,270)"><circle r="64" fill="#FF7A00"/><g transform="translate(-38,-38) scale(1.18)" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h48v32H30l-12 10V44H8z"/><path d="M18 24h28M18 33h18"/></g></g><text x="600" y="430" text-anchor="middle" font-size="104" fill="var(--lt,#2A211A)" letter-spacing="-3" font-family="'DM Sans',sans-serif" font-weight="700">quartier coop</text></symbol><symbol id="i-h" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3z"/><path d="M9 21v-6h6v6"/></symbol>
 <symbol id="i-c" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
 <symbol id="i-b" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/></symbol>
 <symbol id="i-t" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
@@ -204,7 +205,7 @@ html.kiosk .q,html.veille .q{scale:2.2}
 </defs></svg>
 <div id="app">
 <section class="view on" id="v-home">
-<header class="hero"><span class="sim">Simulation · contenus fictifs</span><button class="pro" data-a="go:compte" id="hb-acc">Se connecter</button><div class="wm">Quartier Coop</div><h1>Le quartier,<br><span class="hl">c’est nous.</span></h1><p class="ph1" aria-label="Manger, sortir, s’informer, se rencontrer."><span class="vb" aria-hidden="true">Manger,</span><span class="vb" aria-hidden="true" style="--d:1.2s">sortir,</span><span class="vb" aria-hidden="true" style="--d:2.4s">s’informer,</span><span class="vb" aria-hidden="true" style="--d:3.6s">se rencontrer.</span></p><p id="dt"></p><div class="lg" style="display:flex;gap:6px;margin-top:10px"><button data-a="lang:fr" aria-pressed="true">FR</button><button data-a="lang:en" aria-pressed="false">EN</button><button data-a="lang:de" aria-pressed="false">DE</button></div><div class="deco" id="deco" aria-hidden="true"></div><div class="fx" id="fx" aria-hidden="true"></div></header>
+<header class="hero"><span class="sim">Simulation · contenus fictifs</span><button class="pro" data-a="go:compte" id="hb-acc">Se connecter</button><svg class="wm" role="img" aria-label="Quartier Coop"><use href="#i-logo"/></svg><h1>Le quartier,<br><span class="hl">c’est nous.</span></h1><p class="ph1" aria-label="Manger, sortir, s’informer, se rencontrer."><span class="vb" aria-hidden="true">Manger,</span><span class="vb" aria-hidden="true" style="--d:1.2s">sortir,</span><span class="vb" aria-hidden="true" style="--d:2.4s">s’informer,</span><span class="vb" aria-hidden="true" style="--d:3.6s">se rencontrer.</span></p><p id="dt"></p><div class="lg" style="display:flex;gap:6px;margin-top:10px"><button data-a="lang:fr" aria-pressed="true">FR</button><button data-a="lang:en" aria-pressed="false">EN</button><button data-a="lang:de" aria-pressed="false">DE</button></div><div class="deco" id="deco" aria-hidden="true"></div><div class="fx" id="fx" aria-hidden="true"></div></header>
 <div class="al"><span class="g">Alerte</span><b>Travaux : voie fermée, circulation déviée</b><span class="s">Du lundi 9 au vendredi 13 novembre</span></div>
 <div id="sb-h"></div><h2>Plats du jour</h2><div class="p" id="pl-l"></div>
 <div id="bp"><div class="c gr"><span class="g" style="background:var(--on);color:#1F4D3A">Bon plan · Boulangerie</span><b style="font-size:17px">Panier anti-gaspi du soir</b><span class="s">3 € le panier · retrait de 18 h à 19 h</span></div></div>
@@ -365,7 +366,7 @@ var TVF=0;
 function tvfx(){var t=$("#tv"),f=$("#tvfx"),d=$("#tvd");if(!t||!f||!window.qcTheme||!t.clientHeight)return;qcTheme.mk(f,t.clientHeight);d.innerHTML=qcTheme.s.svg}
 document.addEventListener("fullscreenchange",function(){setTimeout(tvfx,250)});
 function tvs(){var t=$("#tv");if(!t)return;
-if(!$("#tvc")){t.innerHTML='<div class="fx" id="tvfx" aria-hidden="true"></div><div class="deco tvd" id="tvd" aria-hidden="true"></div><div class="tvh"><span class="tvl">Quartier Coop</span><span class="tvt" id="tvt"></span></div><div class="tvc" id="tvc"></div><div class="tvn" id="tvn" aria-hidden="true"></div><div class="tvf">'+tvb()+'</div><i class="tvp" id="tvp"></i>';TVF=0}
+if(!$("#tvc")){t.innerHTML='<div class="fx" id="tvfx" aria-hidden="true"></div><div class="deco tvd" id="tvd" aria-hidden="true"></div><div class="tvh"><svg class="tvl" role="img" aria-label="Quartier Coop"><use href="#i-logo"/></svg><span class="tvt" id="tvt"></span></div><div class="tvc" id="tvc"></div><div class="tvn" id="tvn" aria-hidden="true"></div><div class="tvf">'+tvb()+'</div><i class="tvp" id="tvp"></i>';TVF=0}
 t.classList.toggle("s4",ti==3);
 if(!TVF&&window.qcTheme&&t.clientHeight){TVF=1;tvfx()}
 var dt=new Date(),lc={fr:"fr-FR",en:"en-GB",de:"de-DE"}[LG]||"fr-FR",h;
