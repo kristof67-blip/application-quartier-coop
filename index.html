@@ -125,6 +125,21 @@ html.noanim .vb,html.noanim .vb::before,html.noanim .vb::after,html.noanim .q,ht
 html.noanim .q{display:none}
 @media(prefers-reduced-motion:reduce){html:not(.anim) .vb,html:not(.anim) .vb::before,html:not(.anim) .vb::after,html:not(.anim) .q,html:not(.anim) .gb i,html:not(.anim) .sun,html:not(.anim) .deco{animation:none}html:not(.anim) .q{display:none}}
 @media(min-width:900px){.hero h1{font-size:76px}.hero{padding-bottom:210px}.deco{width:150px;height:184px}.hero .ph1{font-size:24px}}
+@media(min-width:900px),(orientation:landscape) and (max-height:560px){.hero>svg.wm{position:absolute;top:12px;left:50%;transform:translateX(-50%);right:auto;bottom:auto;width:170px;margin:0}.hero h1{margin-top:64px}}
+@media(orientation:landscape) and (max-height:560px) and (max-width:899px){
+#app{max-width:none;padding:0 20px 90px}
+.hero{margin:10px 0 0;border-radius:24px;padding:16px 24px 96px}
+.hero h1{font-size:44px;margin-bottom:6px}
+.hero>svg.deco,.deco{width:96px;height:118px}
+.hero .pro{top:12px;right:20px}
+#ev-3,#ev-l,#tr-l,#vo-l,#pa,#bp{display:grid;grid-template-columns:repeat(2,1fr);column-gap:16px;align-items:start}
+#bp h2,#ev-l h2,#tr-l h2,#vo-l h2,#pa h2{grid-column:1/-1}
+.p{margin:0;padding:4px 0 16px}.p .c{flex-basis:240px}
+.ch{flex-wrap:wrap;overflow:visible}
+#v-pro,#v-compte,#v-plus,#v-guide,#v-mentions,#v-regles{max-width:760px}
+nav{width:min(720px,calc(100% - 24px));bottom:6px;border-radius:20px}
+#toast{bottom:84px}
+}
 #toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:var(--bg);border-radius:14px;padding:12px 16px;font-size:14px;width:min(420px,90%);display:none;text-align:center}
 #cft{position:fixed;left:-400px;top:0;z-index:9999}#cft.on{left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;padding:16px;border-radius:12px;box-shadow:0 0 0 100vmax rgba(0,0,0,.55)}.v .s a,p.s a,.c .s a{color:var(--ac);font-weight:600}.tv{background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(0,0,0,.4)),var(--hb);color:#fff;padding:3% 4%;gap:0}
 .tv .fx{z-index:1}
