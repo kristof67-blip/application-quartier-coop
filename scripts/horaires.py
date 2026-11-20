@@ -12,6 +12,8 @@ from zoneinfo import ZoneInfo
 # Arrêts à afficher : (nom exact tel qu'écrit dans les données CTS, mode)
 ARRETS = [("Starcoop", "tram"), ("Capitainerie", "bus"), ("Coopérative", "bus")]
 JOURS = 3  # nombre de jours de passages conservés (aujourd'hui compris)
+# Lignes à ne pas afficher (sans utilité pour le quartier) : N3 = navette de nuit vers Kehl
+LIGNES_EXCLUES = {"N3"}
 PARIS = ZoneInfo("Europe/Paris")
 # Fichier principal (zip GTFS) du jeu de données « Données théoriques (GTFS) et temps réel (SIRI-lite) du réseau CTS »
 # sur data.gouv.fr : cette adresse « permanente » redirige toujours vers la version la plus récente.
@@ -145,7 +147,7 @@ def extraire(z, aujourdhui):
         for j in actifs.get(service_id, ()):
             dt = datetime.combine(j, time(0, 0), tzinfo=PARIS) + timedelta(seconds=hms(heure))
             ts = int(dt.timestamp())
-            if debut <= ts < fin:
+            if debut <= ts < fin and routes.get(route_id, "") not in LIGNES_EXCLUES:
                 par_arret[nom].append([ts, routes.get(route_id, ""), cap])
     sortie = []
     for nom, mode in ARRETS:
