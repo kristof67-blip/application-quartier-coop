@@ -1,8 +1,8 @@
-# Quartier Coop : met à jour chaque jour le fichier horaires.json (passages prévus aux arrêts du quartier).
+# Quartier Coop : met à jour toutes les 3 heures le fichier horaires.json (passages prévus aux arrêts du quartier).
 name: Mise à jour des horaires
 on:
   schedule:
-    - cron: "30 3 * * *"
+    - cron: "17 */3 * * *"
   workflow_dispatch:
 permissions:
   contents: write
