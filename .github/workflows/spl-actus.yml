@@ -1,0 +1,24 @@
+# Quartier Coop : chaque jour, récupère les articles de la SPL Deux-Rives étiquetés « Coop » (fichier spl-actus.json).
+name: Actualités de la SPL
+on:
+  schedule:
+    - cron: "41 5 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  spl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lire le flux de la SPL
+        run: python scripts/spl_actus.py
+      - name: Enregistrer le résultat
+        run: |
+          git config user.name "spl-bot"
+          git config user.email "spl-bot@users.noreply.github.com"
+          git add spl-actus.json
+          git diff --staged --quiet || (git commit -m "Mise à jour des actualités de la SPL" && git push)
