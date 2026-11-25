@@ -1,8 +1,13 @@
 {
- "maj": "2026-11-24T16:20:52+00:00",
+ "maj": "2026-11-25T16:00:28+00:00",
  "source": "Strasbourg Deux—Rives",
  "url": "https://strasbourgdeuxrives.eu/",
  "articles": [
+  {
+   "titre": "Les chantiers à l’automne 2026 : Parc de la Cour des Douanes, passerelle et plus de 900 logements en chantier",
+   "date": "2026-11-25T14:04:45+00:00",
+   "lien": "https://strasbourgdeuxrives.eu/fr/les-chantiers-a-lautomne-2026-parc-de-la-cour-des-douanes-passerelle-et-plus-de-900-logements-en-chantier/"
+  },
   {
    "titre": "Participez aux Journées de l’architecture 2026 sur le projet urbain Deux-Rives / Zwei-Ufer !",
    "date": "2026-09-03T08:06:19+00:00",
@@ -27,11 +32,6 @@
    "titre": "Tour d’horizon des chantiers à l’automne 2025",
    "date": "2025-12-11T12:00:00+00:00",
    "lien": "https://strasbourgdeuxrives.eu/fr/tour-dhorizon-des-chantiers-a-lautomne-2025/"
-  },
-  {
-   "titre": "Un chantier participatif pour le parc du Petit Rhin !",
-   "date": "2025-12-11T12:00:00+00:00",
-   "lien": "https://strasbourgdeuxrives.eu/fr/un-chantier-participatif-pour-le-parc-du-petit-rhin/"
   }
  ]
 }
